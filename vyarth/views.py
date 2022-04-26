@@ -21,7 +21,7 @@ class HomePage(TemplateView):
     template_name = "index.html" 
 
 class Mainview(TemplateView):
-    template_name = "index2.html"
+    template_name = "works.html"
 
 class SignUp(CreateView):
     form_class = forms.UserCreateForm
