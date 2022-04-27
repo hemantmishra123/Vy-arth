@@ -45,9 +45,15 @@ def GenView(request):
         typeofwaste=request.POST['Typeofwaste']
         communityname=request.POST['communityname']
         quantity=request.POST['quantity']
+        dataset=SubmitWaste.objects.get(email=email)
         user=SubmitWaste(contact=contact,fullname=fullname,address=address,email=email,typeofwaste=typeofwaste,quantityofwaste=quantity,communityName=communityname)
-        user.save()
-        return redirect('main')
+        if(email==dataset.email):
+       	    message="your Email id is Already Registered with us"
+            return render(request,'thankyou.html',{'message':message})
+        else:
+           user.save()
+           return redirect('main')
+        
     return render(request,'SignupG.html')
     
 def signu_request(request):
